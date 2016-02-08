@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def welcome
-    render text: "Welcome to the Climate CoLab Wep application!"
+    render text: "Welcome to the Climate CoLab Web Application!"
   end
 
 end
