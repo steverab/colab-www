@@ -1,1 +1,1 @@
-# ClimateCoLab-WWW
+# CoLab-WWW
