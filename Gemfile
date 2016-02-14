@@ -16,6 +16,8 @@ gem 'autoprefixer-rails'
 
 gem "slim-rails"
 gem "thin"
+gem "groupdate"
+gem "chartkick"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
