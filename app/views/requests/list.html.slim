@@ -15,5 +15,7 @@ table
             - else
               a href="./requests/#{request.id}" = request[column_name]
 
-= geo_chart(@countryCountMap)
-= pie_chart(@countryCountMap)
+= geo_chart(@countryCountDict)
+= pie_chart(@countryCountDict)
+= pie_chart(@eduCountDict)
+= column_chart(@orgCountDict)
