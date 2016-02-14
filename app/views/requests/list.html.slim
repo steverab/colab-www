@@ -1,0 +1,16 @@
+h1 Listing requests
+
+table
+  thead
+    tr
+      - @requests.first.each do |column_name|
+        th = column_name
+  tbody
+    - @requests.each do |request|
+      tr
+        - request.each do |column_name|
+          td 
+            - if column_name != :id
+              = request[column_name]
+            - else
+              a href="./requests/#{request.id}" = request[column_name]
