@@ -14,3 +14,6 @@ table
               = request[column_name]
             - else
               a href="./requests/#{request.id}" = request[column_name]
+
+= geo_chart(@countryCountMap)
+= pie_chart(@countryCountMap)
