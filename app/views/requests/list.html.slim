@@ -1,21 +1,49 @@
-h1 Listing requests
+h1 Request evaluation
 
-table
-  thead
-    tr
-      - @requests.first.each do |column_name|
-        th = column_name
-  tbody
-    - @requests.each do |request|
-      tr
-        - request.each do |column_name|
-          td 
-            - if column_name != :id
-              = request[column_name]
-            - else
-              a href="./requests/#{request.id}" = request[column_name]
+.row
+  .col-md-6
+    div class="panel panel-primary"
+      .panel-heading
+        h3 class="panel-title" Active Countries
+      .panel-body
+        = geo_chart(@countryCountDict)
+  .col-md-6
+    div class="panel panel-primary"
+      .panel-heading
+        h3 class="panel-title" Country Distribution
+      .panel-body
+        = pie_chart(@countryCountDict)
+        
+.row
+  .col-md-6
+    div class="panel panel-primary"
+      .panel-heading
+        h3 class="panel-title" Source Organizations
+      .panel-body
+        = bar_chart(@orgCountDict)
+  .col-md-6
+    div class="panel panel-primary"
+      .panel-heading
+        h3 class="panel-title" Educational Institution Distribution
+      .panel-body
+        = pie_chart(@eduCountDict)
 
-= geo_chart(@countryCountDict)
-= pie_chart(@countryCountDict)
-= pie_chart(@eduCountDict)
-= column_chart(@orgCountDict)
+div class="panel panel-primary"
+  .panel-heading
+    h3 class="panel-title" Complete request log
+  .panel-body style="overflow:hidden;"
+    .table-responsive
+      table class="table table-striped table-bordered table-hover"
+        thead
+          tr
+            - @requests.first.each do |column_name|
+              th = column_name
+        tbody
+          - @requests.each do |request|
+            tr
+              - request.each do |column_name|
+                td 
+                  - if column_name != :id
+                    = request[column_name]
+                  - else
+                    a href="./requests/#{request.id}" = request[column_name]
