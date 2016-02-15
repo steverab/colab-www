@@ -1,0 +1,16 @@
+h1 Listing contests
+
+table
+  thead
+    tr
+      - @contests.first.each do |column_name|
+        th = column_name
+  tbody
+    - @contests.each do |contest|
+      tr
+        - contest.each do |column_name|
+          td 
+            - if column_name != :id
+              = contest[column_name]
+            - else
+              a href="./contest/#{contest.id}" = contest[column_name]

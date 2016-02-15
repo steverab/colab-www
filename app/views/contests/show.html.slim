@@ -1,0 +1,11 @@
+h1 Contest
+
+table
+  thead
+    tr
+      - @contest.each do |column_name|
+        th = column_name
+  tbody
+    tr
+      - @contest.each do |column_name|
+        td = @contest[column_name]
