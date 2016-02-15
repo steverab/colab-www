@@ -6,6 +6,10 @@ class UsersController < ApplicationController
     render :list
   end
 
+  def register
+    render :register
+  end
+
   def show
     @user = User.find(params[:id])
     render :show
