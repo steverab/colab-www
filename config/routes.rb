@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'application#index'
 
-  get 'register' => 'users#register'
+  get 'register' => 'users#show_register'
+  post 'register' => 'users#make_register'
 
   get 'users' => 'users#list'
   get 'users/register' => 'users#register'
