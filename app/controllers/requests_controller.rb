@@ -4,6 +4,12 @@ class RequestsController < ApplicationController
   def list
     @requests = Request.all
 
+    @requestPerDayCountDict = {}
+    all = @requests.clone.as_json
+    all.group_by{ |h| h['created_at'][0..9]}.each do |req, items|
+      @requestPerDayCountDict[req] = items.length
+    end
+
     @countryCountDict = {}
     all = @requests.clone.as_json
     all.group_by{ |h| h['country'] }.each do |loc,items|
@@ -20,7 +26,6 @@ class RequestsController < ApplicationController
     all = @requests.clone.as_json
     all.group_by{ |h| h['reverse'] }.each do |rev,items|
       if rev.split(".").last != nil && rev.split(".").last.downcase == "edu"
-        p items.length
         @eduCountDict["Educational Institution"] = @eduCountDict["Educational Institution"] + items.length
       else
         @eduCountDict["Other"] = @eduCountDict["Other"] + items.length

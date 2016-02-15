@@ -1,5 +1,11 @@
 h1 Request evaluation
 
+div class="panel panel-primary"
+  .panel-heading
+    h3 class="panel-title" Requests per Day
+  .panel-body
+    = line_chart(@requestPerDayCountDict)
+
 .row
   .col-md-6
     div class="panel panel-primary"
