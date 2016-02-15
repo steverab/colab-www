@@ -7,6 +7,6 @@
             h3 class="panel-title" 
               a href="./contests/#{contest.id}" = contest["name"]
           .panel-body
-            p = contest["short_name"]
+            p class="noMargin" = contest["short_name"]
           .panel-footer
-            p = "Last updated: " + time_ago_in_words(contest["updated_at"]) + " ago"
+            p class="noMargin" = "Last updated: " + time_ago_in_words(contest["updated_at"]) + " ago"

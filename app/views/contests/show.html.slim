@@ -3,7 +3,8 @@ div class="panel panel-default"
     h3 class="panel-title" 
       a href="./contests/#{@contest.id}" = @contest["name"]
   .panel-body
-    p = @contest["short_name"]
+    p 
+      b = @contest["short_name"]
     p = @contest["description"]
     
     h4 Advisors
@@ -24,4 +25,4 @@ div class="panel panel-default"
         li
           a href="/users/#{fellow["id"]}" = fellow["first_name"] + " " + fellow["last_name"]
   .panel-footer
-    p = "Last updated: " + time_ago_in_words(@contest["updated_at"]) + " ago"
+    p class="noMargin" = "Last updated: " + time_ago_in_words(@contest["updated_at"]) + " ago"
