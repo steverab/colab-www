@@ -1,11 +1,27 @@
-h1 Contest
-
-table
-  thead
-    tr
-      - @contest.each do |column_name|
-        th = column_name
-  tbody
-    tr
-      - @contest.each do |column_name|
-        td = @contest[column_name]
+div class="panel panel-default"
+  .panel-heading
+    h3 class="panel-title" 
+      a href="./contests/#{@contest.id}" = @contest["name"]
+  .panel-body
+    p = @contest["short_name"]
+    p = @contest["description"]
+    
+    h4 Advisors
+    ul
+      - @contest["advisors"].each do |advisor|
+        li
+          a href="/users/#{advisor["id"]}" = advisor["first_name"] + " " + advisor["last_name"]
+          
+    h4 Judges
+    ul
+      - @contest["judges"].each do |judge|
+        li
+          a href="/users/#{judge["id"]}" = judge["first_name"] + " " + judge["last_name"]
+          
+    h4 Fellows
+    ul
+      - @contest["fellows"].each do |fellow|
+        li
+          a href="/users/#{fellow["id"]}" = fellow["first_name"] + " " + fellow["last_name"]
+  .panel-footer
+    p = "Last updated: " + time_ago_in_words(@contest["updated_at"]) + " ago"

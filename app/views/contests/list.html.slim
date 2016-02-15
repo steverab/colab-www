@@ -1,16 +1,12 @@
-h1 Listing contests
-
-table
-  thead
-    tr
-      - @contests.first.each do |column_name|
-        th = column_name
-  tbody
-    - @contests.each do |contest|
-      tr
-        - contest.each do |column_name|
-          td 
-            - if column_name != :id
-              = contest[column_name]
-            - else
-              a href="./contests/#{contest.id}" = contest[column_name]
+- @contests.each_slice(2) do |slice|
+  .row
+    - slice.each do |contest|
+      .col-md-6
+        div class="panel panel-default"
+          .panel-heading
+            h3 class="panel-title" 
+              a href="./contests/#{contest.id}" = contest["name"]
+          .panel-body
+            p = contest["short_name"]
+          .panel-footer
+            p = "Last updated: " + time_ago_in_words(contest["updated_at"]) + " ago"
