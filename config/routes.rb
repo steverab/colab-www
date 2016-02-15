@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   get 'register' => 'users#show_register'
   post 'register' => 'users#make_register'
 
+  get 'login' => 'users#show_login'
+  post 'login' => 'users#make_login'
+
+  get 'logout' => 'users#logout'
+
   get 'users' => 'users#list'
   get 'users/register' => 'users#register'
   get 'users/:id' => 'users#show'
