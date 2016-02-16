@@ -54,9 +54,6 @@ class UsersController < ApplicationController
     rescue MultiJson::ParseError => e
       @error_message = "Parse error"
       render :login
-    else
-      @error_message = "Generic error"
-      render :login
     end
   end
 
