@@ -8,10 +8,12 @@ class UsersController < ApplicationController
   end
 
   def make_register
-    params.each do |param|
-      p param
-    end
-    @user = User.create(:first_name => params["first_name"], :last_name => params["last_name"], :screen_name => params["screen_name"], :email => params["email"], :password => params["password"], :short_bio => params["short_bio"])
+
+    # validate user input
+
+    image_upload = Cloudinary::Uploader.upload(params["profile_picture"].path)
+
+    @user = User.create(:first_name => params["first_name"], :last_name => params["last_name"], :screen_name => params["screen_name"], :email => params["email"], :password => params["password"], :short_bio => params["short_bio"], :profile_picture => image_upload["public_id"]+"."+image_upload["format"])
 
     if @user != nil && @user.id != nil
       session[:user] = @user

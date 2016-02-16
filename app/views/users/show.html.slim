@@ -8,4 +8,8 @@ table
   tbody
     tr
       - @user.each do |column_name|
-        td = @user[column_name]
+        td
+          - if column_name != :profile_picture
+            = @user[column_name]
+          - else
+            - cl_image_tag(@user[column_name])

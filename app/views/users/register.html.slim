@@ -1,5 +1,5 @@
 h1 Register
-<form method="POST">
+<form method="POST" enctype='multipart/form-data'>
   <div class="form-group row">
     <label class="col-sm-2 form-control-label">Name</label>
     <div class="col-sm-5">
@@ -38,7 +38,7 @@ h1 Register
   <fieldset class="form-group row">
     <label class="col-sm-2" for="exampleInputFile">Profile picture</label>
     <div class="col-sm-10">
-      <input type="file" class="form-control-file" id="exampleInputFile">
+      <input type="file" class="form-control-file" id="exampleInputFile" name="profile_picture" accept="image/*">
       <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
   </fieldset>
   
