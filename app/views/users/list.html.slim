@@ -1,16 +1,17 @@
-h1 Listing users
+h1 Users
 
-table
+table class="table"
   thead
     tr
-      - @users.first.each do |column_name|
-        th = column_name
+      th #
+      th Name
+      th Email
+      th Screen name
   tbody
-    - @users.each do |user|
-      tr
-        - user.each do |column_name|
-          td 
-            - if column_name != :id
-              = user[column_name]
-            - else
-              a href="./users/#{user.id}" = user[column_name]
+  - @users.each do |user|
+    tr
+      td 
+        a href="./users/#{user.id}" = user["id"]
+      td = user["first_name"] + " " + user["last_name"]
+      td = user["email"]
+      td = user["screen_name"]
