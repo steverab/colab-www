@@ -1,29 +1,30 @@
 h1 Users
 
-table class="table"
-  thead
-    tr
-      th #
-      th 
-      th Name
-      th Email
-      th Screen name
-      th Short bio
-      th Member since
-      th Admin
-  tbody
-  - @users.each do |user|
-    tr
-      td 
-        a href="./users/#{user.id}" = user["id"]
-      td = cl_image_tag(user["profile_picture"], :width => 30, :height => 30, :crop => :fill)
-      td = user["first_name"] + " " + user["last_name"]
-      td = user["email"]
-      td = user["screen_name"]
-      td = user["short_bio"]
-      td = user["created_at"]
-      td
-        - if user["is_admin"] == false
-          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        - else
-          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+.table-responsive
+  table class="table"
+    thead
+      tr
+        th #
+        th 
+        th Name
+        th Email
+        th Screen name
+        th Short bio
+        th Member since
+        th Admin
+    tbody
+    - @users.each do |user|
+      tr
+        td 
+          a href="./users/#{user.id}" = user["id"]
+        td = cl_image_tag(user["profile_picture"], :width => 30, :height => 30, :crop => :fill)
+        td = user["first_name"] + " " + user["last_name"]
+        td = user["email"]
+        td = user["screen_name"]
+        td = user["short_bio"]
+        td = user["created_at"]
+        td
+          - if user["is_admin"] == false
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          - else
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
