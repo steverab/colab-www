@@ -32,12 +32,31 @@ class UsersController < ApplicationController
   end
 
   def make_login
-    @user = User.login(:email => params["email"], :password => params["password"])
-    if @user != nil && @user.id != nil
-      session[:user] = @user
-      redirect_to action: "show", id: @user.id
+    begin
+      @user = User.login(:email => params["email"], :password => params["password"])
+      if @user != nil && @user.id != nil
+        session[:user] = @user
+        redirect_to action: "show", id: @user.id
+      else
+        redirect_to action: "show"
+      end
+    rescue ActiveRestClient::HTTPClientException => e
+      if e.status == 404
+        @error_message = "Wrong email/password combination"
+        render :login
+      else
+        @error_message = "Client error"
+        render :login
+      end
+    rescue ActiveRestClient::HTTPServerException => e
+      @error_message = "Server error"
+      render :login
+    rescue MultiJson::ParseError => e
+      @error_message = "Parse error"
+      render :login
     else
-      redirect_to action: "show"
+      @error_message = "Generic error"
+      render :login
     end
   end
 
